@@ -1,0 +1,13 @@
+<?php
+if ($block->getEnabledModule()) {
+    $categoryProducts = $block->getProductCollection();
+    foreach ($categoryProducts as $product) {
+        if ($block->getCurrentProduct()->getID() == $product->getID()) {
+            if ($block->getEnabledBasePrice()) echo $basePrice = $product->getPrice() . "<br>";
+            if ($block->getEnabledFinalPrice()) echo "final: " . $product->getFinalPrice() . "<br>";
+            if ($block->getEnabledSpecialPrice()) echo "special: " . $product->getSpecialPrice(); "<br>";
+            if ($block->getEnabledTierPrice()) echo "tier: " . $tierPrice = $block->getTierPrice(1, $product) . "<br>";
+            if ($block->getEnabledCatalogRulePrice()) echo $catalogRule = $product->getPriceInfo()->getPrice('catalog_rule_price')->getValue() . "<br>";
+        }
+    }
+}
